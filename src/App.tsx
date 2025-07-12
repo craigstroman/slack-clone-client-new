@@ -5,7 +5,7 @@ import { ApolloClient, ApolloProvider, InMemoryCache, NormalizedCacheObject } fr
 import { router } from './pages/Main/Main';
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  uri: 'https://spacexdata.herokuapp.com/graphql',
+  uri: 'http://localhost:4000/',
   cache: new InMemoryCache(),
 });
 
