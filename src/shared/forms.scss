@@ -1,0 +1,38 @@
+.form-input {
+  font-size: 20px;
+  width: 100%;
+  padding: 8px 0;
+  padding-right: 30px; // To avoid overlapping with the clear button
+  color: #333;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  transition: border-color 250ms;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+    border-bottom-color: #777;
+  }
+  &::placeholder {
+    color: transparent;
+  }
+  &::-webkit-contacts-auto-fill-button {
+    visibility: hidden;
+    pointer-events: none;
+    position: absolute;
+  }
+  &:focus + .form-label {
+    transform: translateY(-100%) scale(0.75);
+  }
+  &:not(:placeholder-shown) + .form-label {
+    transform: translateY(-100%) scale(0.75);
+  }
+}
+.form-label {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  color: #43454e;
+  pointer-events: none;
+  transform-origin: left center;
+  transition: transform 250ms;
+}
