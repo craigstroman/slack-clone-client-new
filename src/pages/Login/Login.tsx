@@ -21,6 +21,10 @@ export const Login: React.FC = () => {
           Login
         </button>
       </div>
+      <div className="page-text">
+        Not a registered user?&nbsp;
+        <a href="/register">Sign Up</a>
+      </div>
     </div>
   );
 };
