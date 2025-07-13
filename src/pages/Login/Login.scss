@@ -1,52 +1,17 @@
 @import '../../shared/colors';
+@import '../../shared/forms.scss';
 .login-container {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
-  .form-group {
-    position: relative;
-    margin-top: 30px; // To create space for floating inputs
-    margin-inline: auto;
-    max-width: 400px;
-    text-align: center;
-    .form-input {
-      font-size: 20px;
-      width: 100%;
-      padding: 8px 0;
-      padding-right: 30px; // To avoid overlapping with the clear button
-      color: #333;
-      border: none;
-      border-bottom: 1px solid #ddd;
-      transition: border-color 250ms;
-      background-color: transparent;
-      &:focus {
-        outline: none;
-        border-bottom-color: #777;
-      }
-      &::placeholder {
-        color: transparent;
-      }
-      &::-webkit-contacts-auto-fill-button {
-        visibility: hidden;
-        pointer-events: none;
-        position: absolute;
-      }
-      &:focus + .form-label {
-        transform: translateY(-100%) scale(0.75);
-      }
-      &:not(:placeholder-shown) + .form-label {
-        transform: translateY(-100%) scale(0.75);
-      }
+  .login-form {
+    .form-group {
+      position: relative;
+      margin-top: 30px; // To create space for floating inputs
+      margin-inline: auto;
+      max-width: 400px;
+      text-align: center;
     }
-    .form-label {
-      position: absolute;
-      top: 8px;
-      left: 0;
-      color: #43454e;
-      pointer-events: none;
-      transform-origin: left center;
-      transition: transform 250ms;
-    }
-    .form-button {
+    .login-button {
       font-size: 1.5rem;
       color: #fff;
       background-color: $primaryColor;
@@ -56,6 +21,7 @@
       }
     }
   }
+
   .page-text {
     text-align: center;
     margin-top: 1.5rem;
