@@ -56,4 +56,13 @@
       }
     }
   }
+  .page-text {
+    text-align: center;
+    margin-top: 1.5rem;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
 }
