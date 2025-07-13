@@ -1,0 +1,25 @@
+@import '../../shared/colors';
+@import '../../shared/forms.scss';
+
+.register-container {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  .register-form {
+    .form-group {
+      position: relative;
+      margin-top: 30px; // To create space for floating inputs
+      margin-inline: auto;
+      max-width: 400px;
+      text-align: center;
+      .register-button {
+        font-size: 1.5rem;
+        color: #fff;
+        background-color: $primaryColor;
+        cursor: pointer;
+        &:hover {
+          background: darken($primaryColor, 10%);
+        }
+      }
+    }
+  }
+}
