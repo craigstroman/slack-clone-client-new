@@ -3,66 +3,156 @@ import { useForm } from 'react-hook-form';
 import './Register.scss';
 
 export const Register: React.FC = () => {
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
+
+  // const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   console.log('handleRegister: ');
+  // };
+
+  // TODO: Figure out how to handle length validation with passwords
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('handleRegister: ');
+  const onSubmit = (data: any) => {
+    console.log('onSubmit: ');
+    console.log(data);
   };
+
+  console.log('errors: ', errors);
 
   return (
     <div className="register-container">
-      <form className="register-form" onSubmit={(e: React.FormEvent<HTMLFormElement>) => handleRegister(e)}>
+      <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <input className="form-input" type="text" id="first_name" placeholder="First Name" />
+          <input
+            className={errors.first_name ? 'form-input errors' : 'form-input'}
+            type="text"
+            id="first_name"
+            placeholder="First Name"
+            {...register('first_name', { required: true })}
+          />
           <label htmlFor="first_name" className="form-label">
             First Name:
           </label>
-        </div>
-        <div className="form-group">
-          <input className="form-input" type="text" id="last_name" placeholder="Last Name" />
-          <label htmlFor="last_name" className="form-label">
-            Last Name:
-          </label>
-        </div>
-        <div className="form-group">
-          <input className="form-input" type="tel" id="phone_number" placeholder="Phone Number" />
-          <label htmlFor="phone_number" className="form-label">
-            Phone Number:
-          </label>
-        </div>
-        <div className="form-group">
-          <input className="form-input" type="email" id="email" placeholder="Email" />
-          <label htmlFor="email" className="form-label">
-            Email:
-          </label>
-        </div>
-        <div className="form-group">
-          <input className="form-input" type="text" id="username" placeholder="Username" />
-          <label htmlFor="username" className="form-label">
-            Username:
-          </label>
-        </div>
-        <div className="form-group">
-          <input className="form-input" type="password" id="password" placeholder="Password" />
-          <label htmlFor="password" className="form-label">
-            Password:
-          </label>
+          {errors.first_name && <div className="error">First name is required.</div>}
         </div>
         <div className="form-group">
           <input
-            className="form-input"
+            className={errors.last_name ? 'form-input errors' : 'form-input'}
+            type="text"
+            id="last_name"
+            placeholder="Last Name"
+            {...register('last_name', { required: true })}
+          />
+          <label htmlFor="last_name" className="form-label">
+            Last Name:
+          </label>
+          {errors.last_name && <div className="error">Last name is required.</div>}
+        </div>
+        <div className="form-group">
+          <input
+            className={errors.phone_number ? 'form-input errors' : 'form-input'}
+            type="tel"
+            id="phone_number"
+            placeholder="Phone Number"
+            {...register('phone_number', {
+              required: true,
+              pattern: /^(\+?1\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i,
+            })}
+          />
+          <label htmlFor="phone_number" className="form-label">
+            Phone Number:
+          </label>
+          {errors.phone_number && (
+            <div className="error">
+              {' '}
+              {errors.phone_number.type === 'required'
+                ? 'Phone number is required.'
+                : 'Please enter a valid phone number.'}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <input
+            className={errors.email ? 'form-input errors' : 'form-input'}
+            type="email"
+            id="email"
+            placeholder="Email"
+            {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+          />
+          <label htmlFor="email" className="form-label">
+            Email:
+          </label>
+          {errors.email && (
+            <div className="error">
+              {' '}
+              {errors.email.type === 'required'
+                ? 'Email is required.'
+                : 'Please enter a valid email address.'}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <input
+            className={errors.username ? 'form-input errors' : 'form-input'}
+            type="text"
+            id="username"
+            placeholder="Username"
+            {...register('username', { required: true })}
+          />
+          <label htmlFor="username" className="form-label">
+            Username:
+          </label>
+          {errors.username && <div className="error">Username is required.</div>}
+        </div>
+        <div className="form-group">
+          <input
+            className={errors.password ? 'form-input errors' : 'form-input'}
+            type="password"
+            id="password"
+            placeholder="Password"
+            {...register('password', { required: true, maxLength: 5 })}
+          />
+          <label htmlFor="password" className="form-label">
+            Password:
+          </label>
+          {errors.password && (
+            <div className="error">
+              {' '}
+              {errors.password.type === 'required'
+                ? 'Password number is required.'
+                : 'Password must be at least 5 characters long.'}
+            </div>
+          )}
+        </div>
+        <div className="form-group">
+          <input
+            className={errors.password_confirmation ? 'form-input errors' : 'form-input'}
             type="password"
             id="password_confirmation"
-            placeholder="Password Confirmation"
+            placeholder="Password"
+            {...register('password_confirmation', { required: true, maxLength: 5 })}
           />
           <label htmlFor="password_confirmation" className="form-label">
             Password Confirmation:
           </label>
+          {errors.password_confirmation && (
+            <div className="error">
+              {' '}
+              {errors.password_confirmation.type === 'required'
+                ? 'Password number is required.'
+                : 'Password must be at least 5 characters long.'}
+            </div>
+          )}
         </div>
         <div className="form-group">
           <button type="submit" className="register-button">
