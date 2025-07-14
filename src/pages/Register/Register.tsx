@@ -120,17 +120,19 @@ export const Register: React.FC = () => {
             type="password"
             id="password"
             placeholder="Password"
-            {...register('password', { required: true, maxLength: 5 })}
+            {...register('password', { required: true, minLength: 12 })}
           />
           <label htmlFor="password" className="form-label">
             Password:
           </label>
           {errors.password && (
             <div className="error">
-              {' '}
-              {errors.password.type === 'required'
-                ? 'Password number is required.'
-                : 'Password must be at least 5 characters long.'}
+              {errors.password && errors.password.type === 'required' && (
+                <div className="error">Password is required</div>
+              )}
+              {errors.password && errors.password.type === 'minLength' && (
+                <div className="error">Password must be at least 12 characters.</div>
+              )}
             </div>
           )}
         </div>
@@ -140,17 +142,19 @@ export const Register: React.FC = () => {
             type="password"
             id="password_confirmation"
             placeholder="Password"
-            {...register('password_confirmation', { required: true, maxLength: 5 })}
+            {...register('password_confirmation', { required: true, minLength: 12 })}
           />
           <label htmlFor="password_confirmation" className="form-label">
             Password Confirmation:
           </label>
           {errors.password_confirmation && (
             <div className="error">
-              {' '}
-              {errors.password_confirmation.type === 'required'
-                ? 'Password number is required.'
-                : 'Password must be at least 5 characters long.'}
+              {errors.password_confirmation && errors.password_confirmation.type === 'required' && (
+                <div className="error">Password is required</div>
+              )}
+              {errors.password_confirmation && errors.password_confirmation.type === 'minLength' && (
+                <div className="error">Password must be at least 12 characters.</div>
+              )}
             </div>
           )}
         </div>
