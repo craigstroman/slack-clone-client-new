@@ -3,19 +3,6 @@ import { useForm } from 'react-hook-form';
 import './Register.scss';
 
 export const Register: React.FC = () => {
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm();
-
-  // const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   console.log('handleRegister: ');
-  // };
-
-  // TODO: Figure out how to handle length validation with passwords
-
   const {
     register,
     handleSubmit,
