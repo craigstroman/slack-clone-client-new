@@ -14,8 +14,6 @@ export const Register: React.FC = () => {
     console.log(data);
   };
 
-  console.log('errors: ', errors);
-
   return (
     <div className="register-container">
       <form className="register-form" onSubmit={handleSubmit(onSubmit)}>
